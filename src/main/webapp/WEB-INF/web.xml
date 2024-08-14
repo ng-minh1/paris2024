@@ -6,7 +6,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletAthlete</servlet-name>
-        <url-pattern>/ServletAthlete</url-pattern>
+        <url-pattern>/ServletAthlete/lister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAthlete</servlet-name>
+        <url-pattern>/ServletAthlete/consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAthlete</servlet-name>
+        <url-pattern>/ServletAthlete/ajouter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
