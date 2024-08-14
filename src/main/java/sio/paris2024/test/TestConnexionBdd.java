@@ -6,6 +6,7 @@ package sio.paris2024.test;
 
 import java.sql.Connection;
 import sio.paris2024.database.ConnexionBdd;
+import sio.paris2024.database.DaoAthlete;
 
 /**
  *
@@ -15,6 +16,7 @@ public class TestConnexionBdd {
       public static void main (String args[]){
         
         Connection cnx = ConnexionBdd.ouvrirConnexion();
+        System.out.println ("nombre d athletes=" + DaoAthlete.getLesAthletes(cnx).size());
         
         
     }
