@@ -4,6 +4,8 @@
  */
 package sio.paris2024.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author zakina
@@ -11,6 +13,7 @@ package sio.paris2024.model;
 public class Pays {
     private int id;
     private String nom ;
+    private ArrayList<Athlete> lesAthletes ;
 
     public Pays() {
     }
@@ -35,7 +38,21 @@ public class Pays {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public ArrayList<Athlete> getLesAthletes() {
+        return lesAthletes;
+    }
+
+    public void setLesAthletes(ArrayList<Athlete> lesAthletes) {
+        this.lesAthletes = lesAthletes;
+    }
     
-    
+    public void addAthlete(Athlete a){
+        
+        if (lesAthletes == null){
+            lesAthletes = new ArrayList<Athlete>();
+        }
+        lesAthletes.add(a);
+    }
     
 }
