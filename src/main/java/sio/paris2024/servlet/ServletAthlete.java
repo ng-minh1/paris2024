@@ -4,18 +4,32 @@
  */
 package sio.paris2024.servlet;
 
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.util.ArrayList;
+import sio.paris2024.database.DaoAthlete;
+import sio.paris2024.model.Athlete;
 
 /**
  *
  * @author zakina
  */
 public class ServletAthlete extends HttpServlet {
+    
+    Connection cnx ;
+            
+    @Override
+    public void init()
+    {     
+        ServletContext servletContext=getServletContext();
+        cnx = (Connection)servletContext.getAttribute("connection");     
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,7 +69,17 @@ public class ServletAthlete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String url = request.getRequestURI();  
+       
+        // Récup et affichage les athletes 
+        if(url.equals("/paris2024/ServletAthlete/lister"))
+        {              
+            ArrayList<Athlete> lesAthletes = DaoAthlete.getLesAthletes(cnx);
+            request.setAttribute("pLesAthletes", lesAthletes);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+           getServletContext().getRequestDispatcher("/vues/athlete/listerAthlete.jsp").forward(request, response);
+        }
     }
 
     /**
