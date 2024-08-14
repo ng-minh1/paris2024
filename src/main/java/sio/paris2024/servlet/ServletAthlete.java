@@ -98,7 +98,7 @@ public class ServletAthlete extends HttpServlet {
             Athlete a = DaoAthlete.getAthleteById(cnx, idAthlete);
             request.setAttribute("pAthlete", a);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-           getServletContext().getRequestDispatcher("/vues/athlete/consulterrAthlete.jsp").forward(request, response);
+           getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp").forward(request, response);
         }
     }
 
