@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="sio.paris2024.model.Athlete"%>
+<%@page import="sio.paris2024.model.Pays"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +46,7 @@
                             out.println("</td>");;                        
                            
                             out.println("<td>");
-                            out.println(p.getPays().getNom());
+                            out.println(a.getPays().getNom());
                             out.println("</td>");
                                
                         }

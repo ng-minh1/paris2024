@@ -12,7 +12,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sio.paris2024.database.DaoAthlete;
 import sio.paris2024.model.Athlete;
 
@@ -28,7 +31,15 @@ public class ServletAthlete extends HttpServlet {
     public void init()
     {     
         ServletContext servletContext=getServletContext();
-        cnx = (Connection)servletContext.getAttribute("connection");     
+        
+        System.out.println("SERVLKET CONTEXT=" + servletContext.getContextPath());
+        cnx = (Connection)servletContext.getAttribute("connection"); 
+        
+        try {
+            System.out.println("INIT SERVLET=" + cnx.getSchema());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletAthlete.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -78,7 +89,7 @@ public class ServletAthlete extends HttpServlet {
             ArrayList<Athlete> lesAthletes = DaoAthlete.getLesAthletes(cnx);
             request.setAttribute("pLesAthletes", lesAthletes);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-           getServletContext().getRequestDispatcher("/vues/athlete/listerAthlete.jsp").forward(request, response);
+           getServletContext().getRequestDispatcher("/vues/athlete/listerAthletes.jsp").forward(request, response);
         }
     }
 

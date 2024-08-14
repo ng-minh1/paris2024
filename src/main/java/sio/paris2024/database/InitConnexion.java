@@ -6,6 +6,7 @@ package sio.paris2024.database;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author zakina
  */
-public class InitConnexion {
+public class InitConnexion  implements ServletContextListener {
     
      Connection cnx = null;
     
@@ -22,6 +23,7 @@ public class InitConnexion {
     {     
         //Initialisation et lecture du  contexte
         ServletContext servletContext=event.getServletContext();
+        System.out.println("INITCONNEXION" + servletContext.getContextPath());
         try
         {
             //chargement du driver
@@ -34,7 +36,7 @@ public class InitConnexion {
             cnx = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/paris2024","root","");
             //sauvegarder la connexion dans le context
             servletContext.setAttribute("connection",cnx);
-            System.out.println("Connexion opérationnelle" + "jdbc:mariadb://127.0.0.1:3307/sdis");
+            System.out.println("Connexion opérationnelle" + "jdbc:mariadb://127.0.0.1:3306/paris2024");
         }
         catch (SQLException e)
         {
