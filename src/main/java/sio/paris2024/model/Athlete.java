@@ -12,7 +12,7 @@ public class Athlete {
     
     private int id;
     private String nom ;
-
+    private Pays pays ;
     public Athlete() {
     }
 
@@ -35,6 +35,14 @@ public class Athlete {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
     }
     
     
