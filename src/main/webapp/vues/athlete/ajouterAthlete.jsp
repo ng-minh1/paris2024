@@ -31,7 +31,7 @@
                 <label for="pays">Pays : </label>
                 <select name="idPays">
                     <%
-                        ArrayList<¨Pays> lesPays= (ArrayList)request.getAttribute("pLesPays");
+                        ArrayList<Pays> lesPays= (ArrayList)request.getAttribute("pLesPays");
                         for (int i=0; i<lesPays.size();i++){
                             Pays p = lesPays.get(i);
                             out.println("<option value='" + p.getId()+"'>" + p.getNom()+"</option>" );

@@ -4,13 +4,7 @@
     
     <listener>
         <listener-class>sio.paris2024.database.InitConnexion</listener-class>
-    </listener>
-
-
-
-
-
-    
+    </listener> 
     
     <servlet>
         <servlet-name>ServletAthlete</servlet-name>

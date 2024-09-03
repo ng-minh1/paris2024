@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sio.paris2024.database.DaoAthlete;
+import sio.paris2024.database.DaoPays;
 import sio.paris2024.model.Athlete;
+import sio.paris2024.model.Pays;
 
 /**
  *
@@ -100,6 +102,15 @@ public class ServletAthlete extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/athlete/consulterAthlete.jsp").forward(request, response);
         }
+        
+          if(url.equals("/paris2024/ServletAthlete/ajouter"))
+        {                   
+            ArrayList<Pays> lesPays = DaoPays.getLesPays(cnx);
+            request.setAttribute("pLesPays", lesPays);
+            this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
+        }
+        
+        
     }
 
     /**
