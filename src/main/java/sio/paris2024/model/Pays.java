@@ -23,6 +23,10 @@ public class Pays {
         this.nom = nom;
     }
 
+    public Pays(int id) {
+        this.id = id;
+    }
+    
     public int getId() {
         return id;
     }
