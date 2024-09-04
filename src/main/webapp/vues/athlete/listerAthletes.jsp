@@ -72,7 +72,7 @@
                                 out.println(a.getPrenom());
                                 out.println("</td>");
                                 
-                                out.println("<tr><td>");
+                                out.println("<td>");
                                 out.println(a.getDateNaiss());
                                 out.println("</td>");
                            
