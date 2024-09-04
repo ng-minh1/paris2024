@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import sio.paris2024.model.Athlete;
 import sio.paris2024.model.Pays;
@@ -76,6 +77,12 @@ public class DaoAthlete {
                 
                    a.setId(resultatRequete.getInt("a_id"));
                    a.setNom(resultatRequete.getString("a_nom"));
+                   
+                   a.setId(resultatRequete.getInt("a_id"));
+                   a.setPrenom(resultatRequete.getString("a_prenom"));
+                                      
+                   Date date = resultatRequete.getDate("a_dateNaiss");
+                   a.setDateNaiss(date.toLocalDate());
                     
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
@@ -102,9 +109,9 @@ public class DaoAthlete {
             // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
             requeteSql=connection.prepareStatement("INSERT INTO athlete (nom, pays_id)\n" +
-                    "VALUES (?,?,?,?)", requeteSql.RETURN_GENERATED_KEYS );
-            requeteSql.setString(1, ath.getNom());     
-            requeteSql.setInt(2, ath.getPays().getId());
+                    "VALUES (?,?)", requeteSql.RETURN_GENERATED_KEYS );
+            requeteSql.setString(1, ath.getNom());
+            requeteSql.setInt(4, ath.getPays().getId());
 
            /* Exécution de la requête */
             requeteSql.executeUpdate();
