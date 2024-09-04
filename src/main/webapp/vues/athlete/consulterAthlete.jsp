@@ -22,12 +22,15 @@
         <%
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
         %>
-        <h1><%  out.println(a.getNom());%></h1>
+        <h1><%  out.println(a.getNom());%> <%  out.println(a.getPrenom());%></h1>
             
                          
             <table>
             <tr>
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
+            </tr>
+             <tr>
+                <td>Date de naissance </td><td><%  out.println(a.getdateNaiss());%></td>
             </tr>
             <tr>
                 <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
