@@ -29,11 +29,12 @@
             <tr>
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
             </tr>
-             <tr>
-                <td>Date de naissance </td><td><%  out.println(a.getdateNaiss());%></td>
+            <tr>
+                <td>Date naissance: </td><td><%  out.println(a.getDateNaiss());%></td>
             </tr>
             <tr>
                 <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
             </tr>
+            
         </table>
 </html>
