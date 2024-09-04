@@ -26,7 +26,15 @@
                 <label for="nom">NOM : </label>
                 <input id="nom" type="text" name="nom"  size="30" maxlength="30">
                 </br>
-                            
+                
+                 <label for="nom">PRENOM : </label>
+                <input id="nom" type="text" name="prenom"  size="30" maxlength="30">
+                </br>
+                
+                 <label for="nom">DATENAISSANEC : </label>
+                <input id="nom" type="date" name="datenaiss"  size="30">
+                </br>
+                
                 <%-- Champ Liste des pays --%>
                 <label for="pays">Pays : </label>
                 <select name="idPays">
