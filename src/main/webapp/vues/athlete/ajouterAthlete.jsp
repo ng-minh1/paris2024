@@ -27,12 +27,12 @@
                 <input id="nom" type="text" name="nom"  size="30" maxlength="30">
                 </br>
                 
-                 <label for="nom">PRENOM : </label>
-                <input id="nom" type="text" name="prenom"  size="30" maxlength="30">
+                 <label for="prenom">PRENOM : </label>
+                <input id="prenom" type="text" name="prenom"  size="30" maxlength="30">
                 </br>
                 
-                 <label for="nom">DATENAISSANEC : </label>
-                <input id="nom" type="date" name="datenaiss"  size="30">
+                 <label for="datenaiss">DATENAISSANEC : </label>
+                <input id="datenaiss" type="date" name="datenaiss"  size="30" maxlength="30">
                 </br>
                 
                 <%-- Champ Liste des pays --%>
