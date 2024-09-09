@@ -5,7 +5,6 @@
 package sio.paris2024.database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,7 +52,7 @@ public class DaoSport {
         
         Sport s = new Sport();
         try{
-            requeteSql = cnx.prepareStatement("select sport.id as s_id, sport.libelle as s_libelle from sport");
+            requeteSql = cnx.prepareStatement("select sport.id as s_id, sport.libelle as s_libelle from sport where sport.id = ? ");
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1, idSport);
             resultatRequete = requeteSql.executeQuery();
