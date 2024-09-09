@@ -62,7 +62,7 @@
                                 out.println("</td>");
 
                                 out.println("<td><a href =''>");
-                                out.println(s.getNom());
+                                out.println(s.getLibelle());
                                 out.println("</a></td>");;
                                
                             }
