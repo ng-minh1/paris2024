@@ -8,7 +8,6 @@ import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +23,6 @@ import sio.paris2024.model.Sport;
  *
  * @author SIO2
  */
-@WebServlet(name = "ServletSport", urlPatterns = {"/ServletSport"})
 public class ServletSport extends HttpServlet {
 
     Connection cnx ;
@@ -82,7 +80,6 @@ public class ServletSport extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         
         String url = request.getRequestURI();  
        
@@ -90,7 +87,7 @@ public class ServletSport extends HttpServlet {
         if(url.equals("/paris2024/ServletSport/lister"))
         {              
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
-            request.setAttribute("pLesAthletes", lesSports);
+            request.setAttribute("sLesSports", lesSports);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/listerSports.jsp").forward(request, response);
         }
