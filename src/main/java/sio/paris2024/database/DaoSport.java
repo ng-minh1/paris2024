@@ -25,7 +25,7 @@ public class DaoSport {
         
         ArrayList<Sport> lesSports = new ArrayList<Sport>();
         try{
-            requeteSql = cnx.prepareStatement("select s.id as s_id, s.libelle as s_libelle");
+            requeteSql = cnx.prepareStatement("select sport.id as s_id, sport.libelle as s_libelle");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
             
