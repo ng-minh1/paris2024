@@ -5,10 +5,15 @@
 package sio.paris2024.database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static sio.paris2024.database.DaoAthlete.requeteSql;
+import static sio.paris2024.database.DaoAthlete.resultatRequete;
+import sio.paris2024.model.Athlete;
+import sio.paris2024.model.Pays;
 import sio.paris2024.model.Sport;
 
 /**
@@ -44,5 +49,29 @@ public class DaoSport {
             System.out.println("La requête de getLesSports e généré une erreur");
         }
         return lesSports;
+    }
+    
+    public static Sport getSportById(Connection cnx, int idSport){
+        
+        Sport s = new Sport();
+        try{
+            requeteSql = cnx.prepareStatement("select sport.id as s_id, sport.libelle as s_libelle from sport");
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1, idSport);
+            resultatRequete = requeteSql.executeQuery();
+            
+            if (resultatRequete.next()){
+                
+                   s.setId(resultatRequete.getInt("s_id"));
+                   s.setLibelle(resultatRequete.getString("s_libelle"));
+                   
+            }
+           
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return s;
     }
 }
