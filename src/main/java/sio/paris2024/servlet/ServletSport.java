@@ -91,6 +91,15 @@ public class ServletSport extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/listerSports.jsp").forward(request, response);
         }
+        
+        if(url.equals("/paris2024/ServletSport/consulter"))
+        { 
+            int idSport = Integer.parseInt((String)request.getParameter("idSport"));
+            Sport s = DaoSport.getSportById(cnx, idSport);
+            request.setAttribute("sSport", s);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+           getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
+        }
     }
 
     /**

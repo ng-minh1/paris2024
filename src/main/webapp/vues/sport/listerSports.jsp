@@ -61,7 +61,7 @@
                                 out.println(s.getId());
                                 out.println("</td>");
 
-                                out.println("<td><a href =''>");
+                                out.println("<td><a href ='../ServletSport/consulter?idSport="+ s.getId()+ "'>");
                                 out.println(s.getLibelle());
                                 out.println("</a></td>");;
                                
