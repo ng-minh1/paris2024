@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.paris2024.model.Sport"%>
+<%@page import="sio.paris2024.model.Epreuve"%>
+<%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,21 +16,33 @@
         <title>PARIS 2024</title>
     </head>
     <body>
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PARIS 2024</title>
-    </head>
-    <body>
         <%
-                Sport s = (Sport)request.getAttribute("sSport");
-        %>
-        <h1><%  out.println(s.getLibelle());%></h1>
-            
-                         
-            <table>
-            <tr>
-                <td>Id: </td><td><%  out.println(s.getId());%></td>
-            </tr>
-     
-        </table>
+                ArrayList<Epreuve> lesEpreuves = (ArrayList)request.getAttribute("pLesEpreuves");
+        %>            
+            <table>  
+                <thead>
+                    <tr>             
+                        <th>id</th>
+                        <th>nom des epreuves</th>
+              
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <%
+                            for (Epreuve e : lesEpreuves)
+                            {              
+                                out.println("<tr><td>");
+                                out.println(e.getId());
+                                out.println("</td>");
+
+                                out.println("<td>");
+                                out.println(e.getNom());
+                                out.println("</a></td>");;
+                               
+                            }
+                        %>
+                    </tr>
+                </tbody>
+            </table>
 </html>
