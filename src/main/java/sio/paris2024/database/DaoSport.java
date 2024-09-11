@@ -9,8 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static sio.paris2024.database.DaoAthlete.requeteSql;
-import static sio.paris2024.database.DaoAthlete.resultatRequete;
 import static sio.paris2024.database.DaoSport.requeteSql;
 import static sio.paris2024.database.DaoSport.resultatRequete;
 import sio.paris2024.model.Sport;
