@@ -29,12 +29,12 @@ public class Epreuve {
         this.id = id;
     }
 
-    public String getLibelle() {
+    public String getNom() {
         return libelle;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setNom(String nom) {
+        this.libelle = nom;
     }
 
     public Sport getSport() {
@@ -44,4 +44,5 @@ public class Epreuve {
     public void setSport(Sport sport) {
         this.sport = sport;
     }
+    
 }
