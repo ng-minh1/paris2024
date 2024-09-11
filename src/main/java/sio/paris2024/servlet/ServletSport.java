@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sio.paris2024.database.DaoSport;
+import sio.paris2024.model.Epreuve;
 import sio.paris2024.model.Sport;
 
 /**
@@ -95,8 +96,8 @@ public class ServletSport extends HttpServlet {
         if(url.equals("/paris2024/ServletSport/consulter"))
         { 
             int idSport = Integer.parseInt((String)request.getParameter("idSport"));
-            Sport s = DaoSport.getSportById(cnx, idSport);
-            request.setAttribute("sSport", s);
+            ArrayList<Epreuve> lesEpreuves = DaoSport.getLesEpreuvesSportById(cnx, idSport);
+            request.setAttribute("pLesEpreuves", lesEpreuves);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
         }
