@@ -16,10 +16,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sio.paris2024.database.DaoPays;
 import sio.paris2024.database.DaoSport;
 import sio.paris2024.model.Epreuve;
-import sio.paris2024.model.Pays;
 import sio.paris2024.model.Sport;
 
 /**
