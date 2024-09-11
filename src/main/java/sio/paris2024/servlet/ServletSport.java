@@ -16,8 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sio.paris2024.database.DaoPays;
 import sio.paris2024.database.DaoSport;
 import sio.paris2024.model.Epreuve;
+import sio.paris2024.model.Pays;
 import sio.paris2024.model.Sport;
 
 /**
@@ -100,6 +102,13 @@ public class ServletSport extends HttpServlet {
             request.setAttribute("pLesEpreuves", lesEpreuves);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
+        }
+        
+         if(url.equals("/paris2024/ServletSport/ajouter"))
+        {                   
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
         }
     }
 
