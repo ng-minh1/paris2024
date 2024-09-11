@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import static sio.paris2024.database.DaoSport.requeteSql;
 import static sio.paris2024.database.DaoSport.resultatRequete;
 import sio.paris2024.model.Sport;
+import sio.paris2024.model.Epreuve;
 
 /**
  *
@@ -48,27 +49,31 @@ public class DaoSport {
         return lesSports;
     }
     
-    public static Sport getSportById(Connection cnx, int idSport){
-        
-        Sport s = new Sport();
+    public static ArrayList<Epreuve> getLesEpreuvesSportById(Connection cnx, int idSport){
+       ArrayList<Epreuve> lesEpreuves = new ArrayList<Epreuve>();
         try{
-            requeteSql = cnx.prepareStatement("select sport.id as s_id, sport.libelle as s_libelle from sport where sport.id = ? ");
+            requeteSql = cnx.prepareStatement("select epreuve.id as e_id, epreuve.nom as e_nom " +
+                    "from sport " +
+                    "inner join epreuve " +
+                    "on sport.id = epreuve.sport_id" +
+                    " where sport.id = ?; ");
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1, idSport);
             resultatRequete = requeteSql.executeQuery();
             
-            if (resultatRequete.next()){
-                
-                   s.setId(resultatRequete.getInt("s_id"));
-                   s.setLibelle(resultatRequete.getString("s_libelle"));
-                   
+            while(resultatRequete.next()){
+                Epreuve e = new Epreuve();
+                e.setId(resultatRequete.getInt("e_id"));
+                e.setNom(resultatRequete.getString("e_nom"));
+                        
+                lesEpreuves.add(e);
             }
            
-        }
+    }
         catch (SQLException e){
             e.printStackTrace();
             System.out.println("La requête de getLesPompiers e généré une erreur");
         }
-        return s;
+        return lesEpreuves;
     }
 }
