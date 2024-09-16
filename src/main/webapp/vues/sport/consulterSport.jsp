@@ -30,8 +30,9 @@
                 <tbody>
                     <tr>
                         <%
-                            for (Epreuve e : lesEpreuves)
-                            {              
+                            if (lesEpreuves != null && !lesEpreuves.isEmpty()) {
+                            for (Epreuve e : lesEpreuves) {
+                             
                                 out.println("<tr><td>");
                                 out.println(e.getId());
                                 out.println("</td>");
@@ -39,7 +40,7 @@
                                 out.println("<td>");
                                 out.println(e.getNom());
                                 out.println("</a></td>");;
-                               
+                               }
                             }
                         %>
                     </tr>
