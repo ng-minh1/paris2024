@@ -35,8 +35,8 @@ public class FormSport {
     }
     
     //méthode de validation du champ de saisie nom
-    private void validationNom( String nom ) throws Exception {
-        if ( nom != null && nom.length() < 3 ) {
+    private void validationNom( String libelle ) throws Exception {
+        if ( libelle != null && libelle.length() < 3 ) {
         throw new Exception( "Le nom du sport doit contenir au moins 3 caractères." );
         }
     }
@@ -64,7 +64,7 @@ public class FormSport {
         try {
              validationNom( libelle );
         } catch ( Exception e ) {
-            setErreur( "nom", e.getMessage() );
+            setErreur( "libelle", e.getMessage() );
         }
         spo.setLibelle(libelle);
 
