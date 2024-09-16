@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sio.paris2024.database.DaoSport;
+import sio.paris2024.form.FormSport;
 import sio.paris2024.model.Epreuve;
 import sio.paris2024.model.Sport;
 
@@ -33,7 +34,7 @@ public class ServletSport extends HttpServlet {
     {     
         ServletContext servletContext=getServletContext();
         
-        System.out.println("SERVLKET CONTEXT=" + servletContext.getContextPath());
+        System.out.println("SERVLET CONTEXT=" + servletContext.getContextPath());
         cnx = (Connection)servletContext.getAttribute("connection"); 
         
         try {
@@ -105,8 +106,8 @@ public class ServletSport extends HttpServlet {
          if(url.equals("/paris2024/ServletSport/ajouter"))
         {                   
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
-            request.setAttribute("pLesSports", lesSports);
-            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
+            request.setAttribute("sLesSports", lesSports);
+            getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
         }
     }
 
@@ -118,10 +119,34 @@ public class ServletSport extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+        @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+             
+        
+         FormSport form = new FormSport();
+		
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Sport spo = form.ajouterSport(request);
+        
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "sSport", spo );
+		
+        if (form.getErreurs().isEmpty()){
+            Sport sportInsere =  DaoSport.addSport(cnx, spo);
+            if (sportInsere != null ){
+                request.setAttribute( "sSport", sportInsere );
+                this.getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp" ).forward( request, response );
+            }
+            else 
+            {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur 
+            }
+           
+        }
+        
     }
 
     /**
