@@ -31,8 +31,8 @@
                 <input id="prenom" type="text" name="prenom"  size="30" maxlength="30">
                 </br>
                 
-                 <label for="datenaiss">DATENAISSANEC : </label>
-                <input id="datenaiss" type="date" name="datenaiss"  size="30" maxlength="30">
+                 <label for="dateNaiss">DATE NAISSANCE : </label>
+                <input id="dateNaiss" type="date" name="dateNaiss"  size="30" maxlength="30">
                 </br>
                 
                 <%-- Champ Liste des pays --%>
